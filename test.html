@@ -1,0 +1,78 @@
+<!--
+  This is a test HTML file for development and debugging purposes.
+  It simulates the structure of a Bamboo build log page, allowing us
+  to test our userscript's functionality in a controlled environment.
+-->
+<html>
+
+<body>
+    <pre>
+simple	04-Nov-2020 22:49:50	Build ART Sonar Builds - example - Sonar Analysis #14 (PLAN-EXAMPLE-14) started building on agent xxxxxxxx
+simple	04-Nov-2020 22:49:50	Remote Agent
+simple	04-Nov-2020 22:49:50	Build working directory is /u01/BambooSSDAgent5/xml-data/build-dir/PLAN-EXAMPLE
+simple	04-Nov-2020 22:49:50	Executing build ART Sonar Builds - example - Sonar Analysis #14 (PLAN-EXAMPLE-14)
+simple	04-Nov-2020 22:49:50	Starting task 'code check out' of type 'com.atlassian.bamboo.plugins.vcs:task.vcs.checkout'
+simple	04-Nov-2020 22:49:50	Build always requires a clean checkout
+simple	04-Nov-2020 22:49:50	Cleaning build directory '/u01/BambooSSDAgent5/xml-data/build-dir/PLAN-EXAMPLE'
+simple	04-Nov-2020 22:49:50	Checking out into /u01/BambooSSDAgent5/xml-data/build-dir/PLAN-EXAMPLE
+simple	04-Nov-2020 22:49:50	Updating source code to revision: 1496398
+simple	04-Nov-2020 22:49:50	Working directory '/u01/BambooSSDAgent5/xml-data/build-dir/PLAN-EXAMPLE' is empty. Checking out SVN URL 'https://repo.somethinginc.com/repos/utilities/somethingjiraplugins/hourstracking/trunk'
+simple	04-Nov-2020 22:49:51	Updated source code to revision: 1496398
+simple	04-Nov-2020 22:49:51	Finished task 'code check out' with result: Success
+simple	04-Nov-2020 22:49:51	Running pre-build action: Build Number Stamper
+simple	04-Nov-2020 22:49:51	Running pre-build action: VCS Version Collector
+simple	04-Nov-2020 22:49:51	Starting task 'Environment Validation' of type 'com.atlassian.bamboo.plugins.scripttask:task.builder.script'
+command	04-Nov-2020 22:49:51	echo Checking required tools
+build	04-Nov-2020 22:49:52	JAVA version detected: 11.0.9
+build	04-Nov-2020 22:49:52	Maven version detected: 3.6.3
+simple	04-Nov-2020 22:49:52	Finished task 'Environment Validation' with result: Success
+simple	04-Nov-2020 22:49:52	Starting task 'Dependency Cache Restore' of type 'com.atlassian.bamboo.plugins.scripttask:task.builder.script'
+command	04-Nov-2020 22:49:52	echo Restoring cached dependencies
+build	04-Nov-2020 22:49:53	Cache hit for Maven dependencies
+simple	04-Nov-2020 22:49:53	Finished task 'Dependency Cache Restore' with result: Success
+simple	04-Nov-2020 22:49:53	Starting task 'Static Code Lint' of type 'com.atlassian.bamboo.plugins.scripttask:task.builder.script'
+command	04-Nov-2020 22:49:53	mvn checkstyle:check
+build	04-Nov-2020 22:49:54	[INFO] Running Checkstyle analysis
+build	04-Nov-2020 22:49:55	[INFO] 0 Checkstyle violations found
+simple	04-Nov-2020 22:49:55	Finished task 'Static Code Lint' with result: Success
+simple	04-Nov-2020 22:49:55	Starting task 'Security Dependency Scan' of type 'com.atlassian.bamboo.plugins.scripttask:task.builder.script'
+command	04-Nov-2020 22:49:55	mvn org.owasp:dependency-check-maven:check
+build	04-Nov-2020 22:49:56	[INFO] Checking dependencies for known vulnerabilities
+build	04-Nov-2020 22:49:57	[INFO] No vulnerable dependencies found
+simple	04-Nov-2020 22:49:57	Finished task 'Security Dependency Scan' with result: Success
+simple	04-Nov-2020 22:49:57	Starting task 'Generate Build Metadata' of type 'com.atlassian.bamboo.plugins.scripttask:task.builder.script'
+command	04-Nov-2020 22:49:57	echo build.number=14 > target/build-info.properties
+build	04-Nov-2020 22:49:58	Build metadata generated
+simple	04-Nov-2020 22:49:58	Finished task 'Generate Build Metadata' with result: Success
+simple	04-Nov-2020 22:49:58	Starting task 'Sonar Scan' of type 'com.atlassian.bamboo.plugins.scripttask:task.builder.script'
+command	04-Nov-2020 22:49:58	cd /u01/BambooSSDAgent5/xml-data/build-dir/PLAN-EXAMPLE
+command	04-Nov-2020 22:49:58	mvn clean verify sonar:sonar
+build	04-Nov-2020 22:49:59	[INFO] Scanning for projects...
+build	04-Nov-2020 22:50:00	[INFO] Building hourstracking 2.4.1
+build	04-Nov-2020 22:50:01	[INFO] Compiling 64 source files
+build	04-Nov-2020 22:50:02	[INFO] Running unit tests
+build	04-Nov-2020 22:50:03	[INFO] Tests run: 8, Failures: 0, Errors: 0
+build	04-Nov-2020 22:50:04	[INFO] SonarQube server 8.5.1
+build	04-Nov-2020 22:50:05	[INFO] 64 files indexed
+build	04-Nov-2020 22:50:06	[INFO] Analysis report uploaded
+build	04-Nov-2020 22:50:07	[INFO] ANALYSIS SUCCESSFUL
+build	04-Nov-2020 22:50:07	[INFO] BUILD SUCCESS
+simple	04-Nov-2020 22:50:07	Finished task 'Sonar Scan' with result: Success
+simple	04-Nov-2020 22:50:07	Running post-build action: Collect Test Results
+simple	04-Nov-2020 22:50:08	Running post-build action: Artifact Copier
+simple	04-Nov-2020 22:50:09	Running post-build action: Clean Working Directory
+simple	04-Nov-2020 22:50:10	Build ART Sonar Builds - example - Sonar Analysis #14 (PLAN-EXAMPLE-14) completed successfully
+    </pre>
+</body>
+
+<script>
+  // For testing outside of userscript environment
+  function GM_addStyle(css) {
+    const style = document.createElement('style');
+    style.textContent = css;
+    document.head.appendChild(style);
+  }
+</script>
+<script src="Bamboo Logs Formatter-2026-03-06.user.js"></script>
+
+</html>
